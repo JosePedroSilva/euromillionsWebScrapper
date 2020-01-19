@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
+nums_played = [3, 4, 20, 44, 49]
+stars_played = [3, 9]
+
 
 URL = 'https://www.jogossantacasa.pt/web/SCCartazResult/'
 headers = {
@@ -14,6 +17,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 result = soup.find(attrs="colums").get_text()
 r = (result.replace('+', '').strip())
 
+# Removes unnecessary and duplicate information from the list and creates a list for the numbers and a list for the stars
 try:
     result_comp = list(map(int, r.split()))
     result_comp = result_comp[0:7]
@@ -22,5 +26,19 @@ try:
 except ValueError:
     print('Unble to convert into list.')
 
-print(numbers)
-print(stars)
+# Checks the numbers that are correct and returns the number of correct
+counter_nums = 0
+for n in nums_played:
+    for n2 in numbers:
+        if n == n2:
+            counter_nums += 1
+
+# Checks the stars that are correct and returns the number of correct
+counter_stars = 0
+for s in stars_played:
+    for s1 in stars:
+        if s == s1:
+            counter_stars += 1
+
+print(
+    f'You have {counter_nums} number correct and {counter_stars} star correct')
