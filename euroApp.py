@@ -1,8 +1,14 @@
+"""Webscrapping to check euromillions key results
+
+Requires:
+-requests
+-bs4
+"""
 import requests
 from bs4 import BeautifulSoup
 
-nums_played = [3, 4, 20, 44, 49]
-stars_played = [3, 9]
+nums_played = ['List of numbers played']
+stars_played = ['List of stars']
 
 
 URL = 'https://www.jogossantacasa.pt/web/SCCartazResult/'
